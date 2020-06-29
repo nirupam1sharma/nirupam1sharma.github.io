@@ -4,12 +4,12 @@ title: About
 permalink: /about/
 ---
 
-Stephan Raaijmakers, PhD
+Nirupam Sharma, MS
 
 ### More Information
 
-Senior Data Scientist at TNO
+Research Director
 
 ### Contact me
 
-[stephan.raaijmakers[at]tno.nl](mailto:stephan.raaijmakers[at]tno.nl)
+[nirupam1sharma@gmail.com](mailto:nirupam1sharma[at]gmail.com)
