@@ -14,7 +14,7 @@ This blog post will only cover Concat and Append operation and for advanced Merg
 ## Import important libraries
 The first task is to import the important libraries which will be required. In our case, we require a single library **pandas** which we will import.  
 
-**`import pandas as pd`**
+`import pandas as pd`
 
 ## Create a synthetic dataset
 To make it easier for people to understand and replicate this on their system, we create synthetic data using the following code.  
@@ -25,9 +25,9 @@ To make it easier for people to understand and replicate this on their system, w
 
 **`my_series2 = pd.Series(['Fan', 'Gatorade', 'Hersheys', 'Ice cream', 'Jam'], index=[6, 7, 8, 9, 10])`**  
 
-**```
-print(my_series1)
-```**
+
+`print(my_series1)`
+
 
     1        Apple
     2       Banana
@@ -38,9 +38,9 @@ print(my_series1)
     
 
 
-**```
-print(my_series2)
-```**
+
+`print(my_series2)`
+
 
     1           Fan
     2      Gatorade
@@ -49,35 +49,35 @@ print(my_series2)
     5          Jam
     dtype: object
 
-#### Create dataframe objects
+### Create dataframe objects
 
-**`
+`
 df1 = pd.DataFrame([['Adam', 3.79], ['Betty', 3.4]],
-                    columns=['Name', 'GPA'])`**  
+                    columns=['Name', 'GPA'])`  
 
-**`df2 = pd.DataFrame([['Mac', 3.9], ['Nancy', 4]],
-                  columns=['Name', 'GPA'])`**  
+`df2 = pd.DataFrame([['Mac', 3.9], ['Nancy', 4]],
+                  columns=['Name', 'GPA'])`  
 
-**`df3 = pd.DataFrame([['Computer Science','UCLA'],['Business Analytics','University of Cincinnati'],
+`df3 = pd.DataFrame([['Computer Science','UCLA'],['Business Analytics','University of Cincinnati'],
                     ['Psychology','NJIT'],['Electronics','NYU']],
-                  columns = ['Major','School'])`**
+                  columns = ['Major','School'])`
 
 
 Let us look at each of the data frames  
 
-**`df1`**
+`df1`
 
 		Name	GPA
 	0	Adam	3.79
 	1	Betty	3.40
 
-**`df2`**
+`df2`
 
 		Name	GPA
 	0	Mac		3.9
 	1	Nancy	4.0
 
-**`df3`**
+`df3`
 
 		Major				School
 	0	Computer Science	UCLA
@@ -104,12 +104,12 @@ You can have a look at the detailed description of all the parameters [here](htt
 
 >When you concatenate series, then a series object is returned. When multiple objects consisting of at least 1 dataframe are there, then resulting object is a dataframe
 
-### Running pd.concat() on pandas series with different combination of parameters 
-#### 1. Default parameters
+## Running pd.concat() on pandas series with different combination of parameters 
+### 1. Default parameters
 
-**```
+`
 pd.concat([my_series1,my_series2])
-```**
+`
 
 	1         Apple
 	2        Banana
@@ -125,12 +125,12 @@ pd.concat([my_series1,my_series2])
 
 We can see in the above output, by default concatenation happens over index i.e. vertically. The index of the series are not modified and hence we see repeating index. 
 
-#### 2. Using ignore_index parameter
+### 2. Using ignore_index parameter
 To solve the issue of repeating index we set `ignore_index` as True as shown in the below example
 
-**```
+`
 pd.concat([my_series1,my_series2],ignore_index=True)
-```**
+`
 
 
 	0        Apple
@@ -147,12 +147,12 @@ pd.concat([my_series1,my_series2],ignore_index=True)
 
 We can see that the index is reassigned starting with `0` 
  
-#### 3. Using axis parameter
+### 3. Using axis parameter
 We can combine the 2 series horizontally by setting the axis parameter as 1 as shown in below example  
 
-**```
+`
 pd.concat([my_series1,my_series2],axis=1)
-```**  
+`  
 
 		0			1
 	1	Apple		Fan
@@ -161,12 +161,12 @@ pd.concat([my_series1,my_series2],axis=1)
 	4	Donuts		Ice cream
 	5	Eclairs		Jam
 
-### Running pd.concat() on pandas data frames with different combination of parameters 
-#### 1. Default parameters
+## Running pd.concat() on pandas data frames with different combination of parameters 
+### 1. Default parameters
 
-**```
+`
 pd.concat([df1,df2])
-```**
+`
 
 		Name	GPA
 	0	Adam	3.79
@@ -176,12 +176,12 @@ pd.concat([df1,df2])
 
 We can see in the above output, by default concatenation happens over index i.e. vertically. The index of the data frames are not modified and hence we see repeating index. 
 
-#### 2. Using ignore_index parameter
+### 2. Using ignore_index parameter
 To solve the issue of repeating index we set `ignore_index` as True as shown in the below example
 
-**```
+`
 pd.concat([df1,df2],ignore_index=True)
-```**
+`
 
 		Name	GPA
 	0	Adam	3.79
@@ -191,13 +191,13 @@ pd.concat([df1,df2],ignore_index=True)
 
 We can see that the index is reassigned starting with `0` 
  
-#### 3. Using axis parameter
+### 3. Using axis parameter
 We can combine the 2 data frames horizontally by setting the axis parameter as 1 as shown in below example when we try to add the major and school information of the students  
 
-**```
+`
 comb_df = pd.concat([df1,df2],ignore_index=True)  
 print(comb_df)
-```**  
+`  
 
 		Name	GPA
 	0	Adam	3.79
@@ -205,10 +205,10 @@ print(comb_df)
 	2	Mac		3.90
 	3	Nancy	4.00
 
-**```
+`
 result_df = pd.concat([comb_df,df3],axis=1)  
 print(result_df)
-```**  
+`  
 
     		Name   	GPA               	Major                    				School
 	0   	Adam  	3.79    			Computer Science                      	UCLA
@@ -220,7 +220,7 @@ print(result_df)
 Series and DataFrame objects have an append method that can accomplish the same thing as concat does in fewer lines. For example, rather than calling `pd.concat([df1, df2])`, you can simply call `df1.append(df2)`. With the help of pandas `append()` function, we can append rows of one object to the rows of the calling object. With the help of `append()`, columns can also be appended
 
 _Syntax_  
-**`pandas.DataFrame.append(other,ignore_index=False,sort=False)`**
+`pandas.DataFrame.append(other,ignore_index=False,sort=False)`
 
 >Append rows of `other` to the end of caller, returning a new object.  
 Columns in `other` that are not in the caller are added as new columns
@@ -233,12 +233,12 @@ Columns in `other` that are not in the caller are added as new columns
 
 This append() function returns a dataframe as an output
 
-### Running DataFrame.append() on pandas data frames with different combination of parameters 
-#### 1. Default parameters
+## Running DataFrame.append() on pandas data frames with different combination of parameters 
+### 1. Default parameters
 
-**```
+`
 df1.append([df2])
-```**
+`
 
 		Name	GPA
 	0	Adam	3.79
@@ -248,12 +248,12 @@ df1.append([df2])
 
 We see that values in df2 got appended to tail of df1 vertically. The index of the data frames are not modified and hence we see repeating index. 
 
-#### 2. Using ignore_index parameter
+### 2. Using ignore_index parameter
 To solve the issue of repeating index we set `ignore_index` as True as shown in the below example
 
-**```
+`
 df1.append([df2],ignore_index=True)
-```**
+`
 
 		Name	GPA
 	0	Adam	3.79
