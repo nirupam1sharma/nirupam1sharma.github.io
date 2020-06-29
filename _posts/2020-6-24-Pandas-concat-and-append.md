@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Jai Shree Ram
+title: Pandas Concat and Append
 published: true
 tags: Python
 ---
