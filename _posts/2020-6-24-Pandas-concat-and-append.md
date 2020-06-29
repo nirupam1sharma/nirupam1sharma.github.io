@@ -2,7 +2,7 @@
 layout: post
 title: Pandas Concat and Append
 published: true
-tags: Python
+permalink: /python/
 ---
 # Python 102: Pandas Concat and Append   
 In this blog post, 2 important **pandas** functions **pd.concat** and **pd.append** will be discussed with the help of examples.  
